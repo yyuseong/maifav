@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Maifav",
+  "version": "1.0.1",
+  "description": "maimainet에서 YAML 파일로 Favorite Songs 변경",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://maimaidx-eng.com/maimai-mobile/*"
+  ],
+  "action": {
+    "default_title": "Maimai Favorite Sync",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://maimaidx-eng.com/maimai-mobile/home/userOption/favorite/updateMusic*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

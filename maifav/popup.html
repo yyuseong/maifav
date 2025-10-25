@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maifav</title>
+  <style>
+    body {
+  font-family: system-ui, sans-serif;
+  margin: 16px;
+  min-width: 340px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* 텍스트와 버튼 간격 균형 조정 */
+.row {
+  margin: 10px 0;
+}
+
+/* textarea 안쪽/바깥쪽 여백 조정 */
+textarea {
+  width: calc(100% - 8px);   /* 오른쪽 여백 확보 */
+  height: 200px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background-color: #2b2b2b;
+  color: #ffffff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px 12px;         /* 안쪽 여백 */
+  margin: 4px 0 0 0;         /* 위쪽 약간 띄우기 */
+  resize: vertical;
+  white-space: pre;
+  box-sizing: border-box;     /* 패딩 포함 계산 → width:100%와 충돌 안 함 */
+}
+
+/* 버튼 간 여백과 통일된 라운드 */
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  margin-right: 6px;          /* 버튼끼리 간격 */
+}
+button:hover {
+  background-color: #444;
+}
+
+/* Load YAML 버튼 위쪽 여백 */
+#loadYaml {
+  margin-top: 10px;
+}
+
+/* 하단 정보 표시부 */
+.small { font-size: 12px; color: #ccc; }
+.ok { color: #69d37d; }
+.warn { color: #ffc107; }
+.err { color: #ff6b6b; }
+
+.notfound-title {
+  font-weight: 600;
+  margin: 8px 0 4px;
+  color: #f88;
+}
+.notfound-list {
+  color: #f66;
+  margin: 0;
+  padding-left: 18px;
+}
+.notfound-list li {
+  margin: 2px 0;
+}
+
+  </style>
+</head>
+<body>
+  <h1>maimai favorite</h1>
+  <div class="row small">1) 마이마이넷 로그인<br>2) CHANGE FAVORITE SONGS로 이동<br>3) YAML 파일 선택 후 불러오기<br>4) <b>적용</b> 클릭</div>
+
+  <div class="row">
+    <input type="file" id="yamlFile" accept=".yml,.yaml" />
+    <button id="loadYaml">불러오기</button>
+  </div>
+
+  <div class="row small">불러온 곡</div>
+  <div class="row">
+    <textarea id="titles" placeholder="한입만"></textarea>
+  </div>
+
+  <div class="row">
+    <label class="small"><input type="checkbox" id="autoSubmit" checked> 적용 후 자동으로 DECIDE</label>
+  </div>
+
+  <div class="row">
+    <button id="apply">적용</button>
+  </div>
+
+  <div id="status" class="row small"></div>
+  <div id="details" class="row small"></div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
